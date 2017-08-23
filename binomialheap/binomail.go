@@ -16,7 +16,7 @@ type Blist struct {
 	size int
 }
 
-func CreateNewHeap() PQ {
+func CreateNewHeap() *Blist {
 	return &Blist{head: nil, size: 0}
 }
 
@@ -29,6 +29,13 @@ func (bh *Blist) Insert(newnode *BiNode) {
 	bh.addinto(newnode)
 }
 
+func (bh *Blist) Give(val string, prior int) {
+	newn := CreateNewNode(prior)
+	bh.Insert(newn)
+}
+func (bh *Blist) Take() int {
+	return bh.Pop()
+}
 func (bh *Blist) Pop() int {
 	bh.size -= 1
 	track := bh.head
@@ -161,7 +168,7 @@ func (bf *BiNode) Print_Level() {
 
 }
 
-func (bh *Blist) Print() {
+func (bh *Blist) PrintValue() {
 	if bh.head == nil {
 		fmt.Print("heap is empty.")
 	}

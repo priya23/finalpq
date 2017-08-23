@@ -7,8 +7,9 @@ import (
 )
 
 type PQ interface {
-	Insert(string, int)
-	Remove() int
+	Give(string, int)
+	Take() int
+	PrintValue()
 	//Update(interface{}, interface{}, int)
 	//NewCreate()
 }
